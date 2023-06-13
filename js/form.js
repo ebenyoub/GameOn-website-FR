@@ -115,6 +115,7 @@ function loadInit() {
                     return;
                 }
                 button.checked = !button.checked;
+                saveValues();
             }
             validate();
         })
