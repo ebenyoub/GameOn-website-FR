@@ -8,26 +8,27 @@
     <link rel="stylesheet" href="style/modal.css" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/cf618d8113.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/cf618d8113.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="topnav" id="myTopnav">
-        <div class="header-logo">
-            <img alt="logo" src="assets/Logo.png" width="auto" height="auto" />
+    <nav class="topnav" id="myTopnav">
+        <div class="header-logo--container">
+            <div class="header-logo">
+                <img alt="logo" src="assets/Logo.png" width="auto" height="auto" />
+                <div class="icon"><i class="fa fa-bars"></i></div>
+            </div>
         </div>
         <div class="main-navbar">
-
             <a href="#" class="active"><span>Détails de l'évènement</span></a>
             <a href="#"><span>À propos</span></a>
             <a href="#"><span>Contact</span></a>
             <a href="#"><span>Évènements passés</span></a>
-            <a href="javascript:void(0);" class="icon" onclick="editNav()">
-                <i class="fa fa-bars"></i>
-            </a>
         </div>
-    </div>
+    </nav>
+    <div class="overlay"></div>
+
     <main>
         <div class="hero-section">
             <div class="hero-content">
@@ -46,7 +47,7 @@
             <div class="hero-img">
                 <img src="assets/bg_img.jpg" alt="img" />
             </div>
-            <button class="btn-signup modal-btn">
+            <button class="btn-signup modal-btn--responsive">
                 je m'inscris
             </button>
         </div>
@@ -149,11 +150,14 @@
             </div>
         </div>
     </main>
+
     <footer>
         <p class="copyrights">
             Copyright 2014 - 2022, GameOn Inc.
         </p>
     </footer>
+
+    <script src="js/base.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/form.js"></script>
 </body>
