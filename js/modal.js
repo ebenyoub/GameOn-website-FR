@@ -14,6 +14,7 @@ modalbg.addEventListener("click", e => !modalBody.contains(e.target) && closeMod
 // ferme la modale avec la croix
 closeBtn.addEventListener("click", closeModal);
 
+// ferme la modale avec la touche 'echape'
 window.addEventListener('keydown', closeModalWithEscape);
 
 function closeModalWithEscape(event) {
@@ -31,11 +32,12 @@ function closeModalWithEscape(event) {
 **------------------------------------------------------------------------
 */
 
+// 
 function launchModal() {
     modalbg.style.display = "block";
     thanks && changeModal();
     inputs.first.focus();
-    // blocker le defilement de l'arriere-plan
+    // block background scrolling
     document.body.classList.add('modal-open');
 }
 
@@ -46,16 +48,16 @@ function closeModal() {
 }
 
 function resetModal() {
-    // supprime les messages d'erreur
+    // suppress error messages
     confirmMsg.style.display = 'none';
-    // ré-affiche tous les champs du formulaire
+    // re-displays all form fields
     formData.forEach(field => {
         field.classList.remove('hideField');
     })
-    // ré-initialise le bouton du formulaire
+    // reset form button
     btnSubmit.classList.remove('btn-confirm');
     btnSubmit.value = "C'est parti";
-    // ré-initialise la couleur des champs
+    //reset fields button color
     for (let input of Object.values(inputs)) {
         input.classList.remove('isValid');
     }

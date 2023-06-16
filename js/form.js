@@ -6,7 +6,7 @@
 
 class ErrorManager {
     constructor() {
-        // objet qui stocke les conditions et les messages d'erreur
+        // object that stores error conditions and messages
         this.err = {
             required: {
                 condition: value => value === '',
@@ -35,25 +35,25 @@ class ErrorManager {
         let isValid = true;
         for (let i = 0; i < conditions.length; i++) {
             const name = conditions[i];
-            // si le champ est invalide, le message d'erreur relatif est affiché
+            // if the field is invalid, the relative error message is displayed
             if (name.condition(input.value.trim())) {
                 this.displayError(input, name.message, style);
                 isValid = false;
                 break;
             }
         }
-        // si le champ est valid, l'erreur disparait et la bordure devient verte
+        // if the field is valid, the error disappears and the border turns green
         isValid && this.displayValid(input, style);
         return isValid ? true : false;
     }
 
     checkDate(date) {
-        // parsing du format de la date
+        // date format parsing
         const year = date.slice(0, 4);
         const month = date.slice(5, 7);
         const day = date.slice(8, 10);
 
-        // vérification de la date
+        // date check
         if ((parseInt(year) < 1900 || parseInt(year) > 2023) ||
             (parseInt(month) < 1 || parseInt(month) > 12) ||
             (parseInt(day) < 1 || parseInt(day) > 31)) {
@@ -65,11 +65,11 @@ class ErrorManager {
     checkRadio() {
         const span = selectRadio.querySelector('.msg-error');
         let isChecked = false;
-        // on vérifie si au moins un des bouton radio est coché
+        // we check if at least one of the radio buttons is checked
         for (const radio of radios) {
             radio.checked && (isChecked = true)
         }
-        // affichage du message
+        // message display
         span.textContent = isChecked ? '' : "Veuillez selectionner une ville.";
         return isChecked ? true : false;
     }
@@ -94,14 +94,16 @@ class ErrorManager {
 **------------------------------------------------------------------------
 */
 
+// init the app at load
 window.addEventListener('load', loadInit);
 
 btnSubmit.addEventListener('click', submitClick);
 
-// on ecoute chaque champ pour une validation en temps réel
+// we listen to each field for real-time validation
 formData.forEach(component => {
     component.addEventListener('input', validator);
 });
+
 
 function loadInit() {
     createError();
@@ -121,6 +123,7 @@ function loadInit() {
         })
     })
 }
+
 
 function submitClick(event) {
     event.preventDefault();
@@ -155,7 +158,7 @@ function formConfirmation() {
         }
 
 function createError() {
-            // creation d'une balise span pour l'affichage des erreurs dans chaque champs
+            // creation of a span tag to display errors in each field
             formData.forEach(component => {
                 if (!component.querySelector('.msg-error')) {
                     const error = document.createElement('span');
@@ -165,6 +168,7 @@ function createError() {
             })
         }
 
+// if a form is still saved in the localStorage, we display them
 function recoverValues() {
             if (localStorage.getItem('subscription')) {
                 const values = JSON.parse(localStorage.getItem('subscription'));
@@ -183,10 +187,10 @@ function recoverValues() {
 function validate() {
             let valid = true;
 
-            // on crée une instance pour la gestion d'erreur
+            // we create an instance for error handling
             const manager = new ErrorManager();
 
-            // si un champ n'est pas valide, la fonction renvoie false
+            // if a field is not valid, the function returns false
             !manager.checkConditions(inputs.first, [manager.err.required, manager.err.minLength]) && (valid = false);
             !manager.checkConditions(inputs.last, [manager.err.required, manager.err.minLength]) && (valid = false);
             !manager.checkConditions(inputs.email, [manager.err.required, manager.err.email]) && (valid = false);
@@ -207,7 +211,7 @@ function validate() {
             return valid;
         }
 
-// on stocke les valeurs du formulaire dans un objet
+// store form value in an object
 function setValues() {
             let formValues = {
                 "first": inputs.first.value,
@@ -236,12 +240,12 @@ function resetValues() {
             radios.forEach(radio => radio.checked = false);
             checkbox1.checked = false;
             checkbox2.checked = false;
-            // efface les données enregistrées dans le localStorage
+            // suppress datas stored in localStorage
             localStorage.removeItem('subscription');
         }
 
 function saveValues() {
             const values = setValues();
-            // on stock les valeurs dans le localStorage
+            // store values in localStorage
             localStorage.setItem('subscription', JSON.stringify(values));
         }

@@ -14,7 +14,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* border: 1px solid red; */
 }
 
 /* Landing Page */
@@ -175,7 +174,6 @@ main {
   width: 100%;
   padding: 0 calc(2rem + 2vw);
   border-radius: 2rem;
-  /* text-align: justify; */
   flex-grow: 1;
 }
 
@@ -254,8 +252,6 @@ main {
   overflow: hidden;
   position: relative;
   color: #fff;
-  /* transform: translateY(var(--nav-margin)); */
-  /* padding-top: 10px; */
 }
 
 .modal-body {
@@ -299,7 +295,6 @@ body.modal-open {
 
 
 footer {
-  /* position: sticky; */
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 20px auto;
@@ -721,7 +716,6 @@ input[type="date"] {
 
 .msg-error {
   display: block;
-  /* height: 14px; */
   margin: 10px 0;
   font-size: var(--error--font-size);
   color: red;
