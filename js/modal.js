@@ -71,7 +71,6 @@ function changeModal() {
     btnSubmit.classList.add('btn-confirm');
     btnSubmit.value = 'Fermer';
     confirmMsg.style.display = 'block';
-    closeBtn.style.display = 'none';
     thanks = true;
     reset = false;
 }
